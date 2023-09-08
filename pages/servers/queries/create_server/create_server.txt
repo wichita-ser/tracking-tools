@@ -1,0 +1,11 @@
+INSERT INTO public.server(
+	name, domain_name, created_by, updated_by, last_updated_version_on, last_updated_version_by_user_id, is_suspended)
+	VALUES (
+		{{InputServerNewName.text}},
+		{{InputServerNewDomainName.text}},
+		{{appsmith.store.current_user.email}},
+		{{appsmith.store.current_user.email}},
+		{{DatePickerServerNewVersionOn.selectedDate}},
+		{{SelectServerNewVersionBy.selectedOptionValue}},
+		{{SelectServerNewSuspended.selectedOptionValue === "true" ? true : false}}
+	);

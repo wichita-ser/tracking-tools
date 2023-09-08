@@ -1,0 +1,5 @@
+SELECT
+	u.id,
+	u.name,
+	u.email
+FROM public."user" AS u;

@@ -1,0 +1,79 @@
+{
+  "unpublishedPage": {
+    "name": "issue_tracker",
+    "slug": "issue-tracker",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 1224,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 830,
+          "containerStyle": "none",
+          "snapRows": 77,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 85,
+          "minHeight": 790,
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "issue_tracker_get_distinct_issue_status",
+              "name": "get_distinct_issue_status",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "issue_tracker_get_issues",
+              "name": "get_issues",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "InputSearchIssueText.text"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "issue_tracker_JSObject.getIssueStatusDistinct",
+              "name": "JSObject.getIssueStatusDistinct",
+              "collectionId": "issue_tracker_JSObject",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async function () {\n  try {\n    var total = 0;\n    const data = await get_distinct_issue_status.data;\n    const result = data.reduce((acc, item) => {\n      total = total + item.count;\n      acc[item.status] = item.count;\n      return acc;\n    }, {});\n    return {\n      ...result,\n      totalIssue: total\n    };\n  } catch (error) {\n    console.log(\"error, \", error);\n  }\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "issue_tracker",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "64f5b709d9cec14b5ad582d5_64f75e24d9cec14b5ad583c4"
+}

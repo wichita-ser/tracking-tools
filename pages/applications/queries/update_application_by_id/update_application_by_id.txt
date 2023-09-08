@@ -1,0 +1,12 @@
+UPDATE public.application
+SET
+	"name"={{InputAppEditName.text}},
+	"description"={{InputAppEditDes.text}},
+	"environment"={{SelectAppEditEnv.selectedOptionValue}},
+	"version_id"={{SelectAppEditVersion.selectedOptionValue}},
+	"server_id"={{SelectAppEditServer.selectedOptionValue}},
+	"contact_user_id"={{SelectAppEditContact.selectedOptionValue}},
+	"note"={{InputAppEditNote.text}},
+	"updated_by"={{appsmith.store.current_user.email}}
+WHERE
+	"id"={{TableApp.triggeredRow.id}};

@@ -1,0 +1,9 @@
+SELECT
+	s.id,
+	s.name,
+	s.domain_name,
+	TO_CHAR(s.last_updated_version_on AT TIME ZONE 'UTC' AT TIME ZONE 'Asia/Bangkok', 'DD-MM-YYYY HH24:MI') AS "last_updated_version_on"
+FROM public."server" as s
+WHERE
+    s.name ILIKE '%' || {{InputSearchServerText.text}} || '%'
+ORDER BY name DESC;

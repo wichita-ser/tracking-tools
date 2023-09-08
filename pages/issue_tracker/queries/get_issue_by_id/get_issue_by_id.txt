@@ -1,0 +1,15 @@
+
+SELECT
+	i.id,
+	i.title,
+	i.description,
+	i.category,
+	i.status,
+	(select name from public.user where id = i.opened_by) as opened_by,
+	TO_CHAR(i.opened_date AT TIME ZONE 'UTC' AT TIME ZONE 'Asia/Bangkok', 'DD-MM-YYYY HH24:MI') AS "opened_date",
+	(select name from public.user where id = i.closed_by) as closed_by,
+	TO_CHAR(i.closed_date AT TIME ZONE 'UTC' AT TIME ZONE 'Asia/Bangkok', 'DD-MM-YYYY HH24:MI') AS "closed_date",
+	i.updated_by,
+	TO_CHAR(i.updated_date AT TIME ZONE 'UTC' AT TIME ZONE 'Asia/Bangkok', 'DD-MM-YYYY HH24:MI') AS "updated_date"
+FROM public.issues AS i
+WHERE i.id = {{this.params.id}}

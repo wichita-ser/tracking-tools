@@ -1,0 +1,26 @@
+SELECT
+	a.id,
+	a.name,
+	a.description,
+	a.environment,
+	s.id AS server_id,
+	s.name AS server_name,
+	v.id AS version_id,
+	v.name AS version_name,
+	u.id AS contact_id,
+	u.name AS contact_name,
+	a.note,
+	TO_CHAR(a.created_date AT TIME ZONE 'UTC' AT TIME ZONE 'Asia/Bangkok', 'DD-MM-YYYY HH24:MI') AS "last_create_version_on",
+	a.created_by,
+	TO_CHAR(a.updated_date AT TIME ZONE 'UTC' AT TIME ZONE 'Asia/Bangkok', 'DD-MM-YYYY HH24:MI') AS "last_update_version_on",
+	a.updated_by
+FROM
+  public.application AS a
+JOIN
+	public.server AS s ON a.server_id = s.id
+JOIN
+	public.version AS v ON a.version_id = v.id
+JOIN
+	public.user AS u ON a.contact_user_id = u.id
+WHERE a.id = {{TableApp.triggeredRow.id}}
+LIMIT 1;

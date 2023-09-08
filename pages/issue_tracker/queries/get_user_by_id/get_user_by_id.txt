@@ -1,0 +1,4 @@
+SELECT id
+FROM public."user"
+WHERE email = {{this.params.email}}
+LIMIT 1;

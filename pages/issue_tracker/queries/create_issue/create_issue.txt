@@ -1,0 +1,12 @@
+INSERT INTO public.issues(
+	title, description, category, status, opened_by, created_by, updated_by
+)
+	VALUES (
+		{{InputTitle.text}},
+		{{RichTextIssueDes.text}},
+		{{SelectCategory.selectedOptionValue}},
+		{{SelectStatus.selectedOptionValue}},
+		{{this.params.createdByUserId}},
+		{{appsmith.store.current_user.email}},
+		{{appsmith.store.current_user.email}}
+	);

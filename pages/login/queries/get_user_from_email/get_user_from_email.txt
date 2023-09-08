@@ -1,0 +1,6 @@
+SELECT 
+	u.name,
+	u.email
+FROM public.user AS u
+WHERE email = {{ InputEmail.text }}
+AND password = {{ InputPassword.text }};

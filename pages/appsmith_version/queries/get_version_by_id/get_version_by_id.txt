@@ -1,0 +1,10 @@
+SELECT
+	v.id,
+	v.name,
+	v.is_latest,
+	TO_CHAR(v.updated_date AT TIME ZONE 'UTC' AT TIME ZONE 'Asia/Bangkok', 'DD-MM-YYYY HH24:MI') AS "updated_date",
+	v.updated_by
+FROM
+  public.version AS v
+WHERE v.id = {{TableVersion.triggeredRow.id}}
+LIMIT 1;

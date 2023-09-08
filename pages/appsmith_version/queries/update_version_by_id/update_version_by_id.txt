@@ -1,0 +1,6 @@
+UPDATE public.version
+SET
+	name={{InputVersionEditName.text}},
+	updated_by={{appsmith.store.current_user.email}}
+WHERE
+	"id"={{TableVersion.triggeredRow.id}};

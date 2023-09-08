@@ -1,0 +1,8 @@
+INSERT INTO public.comments(issue_id, user_id, content, created_by, updated_by) 
+VALUES (
+	{{this.params.issue_id}},
+	{{this.params.user_id}},
+	{{RichTextIssueComment.text}},
+	{{appsmith.store.current_user.email}},
+	{{appsmith.store.current_user.email}}
+);

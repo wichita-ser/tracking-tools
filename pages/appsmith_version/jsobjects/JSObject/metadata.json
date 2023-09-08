@@ -1,0 +1,15 @@
+{
+  "unpublishedCollection": {
+    "name": "JSObject",
+    "pageId": "appsmith_version",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "variables": [],
+    "userPermissions": []
+  },
+  "id": "appsmith_version_JSObject",
+  "deleted": false,
+  "gitSyncId": "64f5b709d9cec14b5ad582d5_64f74ec7d9cec14b5ad583be"
+}

@@ -1,0 +1,3 @@
+SELECT * 
+FROM public."version" AS v
+ORDER BY v.name DESC

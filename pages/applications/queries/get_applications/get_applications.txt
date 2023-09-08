@@ -1,0 +1,21 @@
+SELECT
+	a.id,
+	a.name,
+	s.name AS server_name,
+	v.name AS version_name,
+	TO_CHAR(a.updated_date AT TIME ZONE 'UTC' AT TIME ZONE 'Asia/Bangkok', 'DD-MM-YYYY HH24:MI') AS "last_updated_version_on"
+FROM
+  public.application AS a
+JOIN
+	public.server AS s ON a.server_id = s.id
+JOIN
+	public.version AS v ON a.version_id = v.id
+WHERE
+	a.name ILIKE '%{{InputSearchText.text}}%' OR
+	s.name ILIKE '%{{InputSearchText.text}}%'
+ORDER BY
+  a.name ASC
+LIMIT
+  {{TableApp.pageSize}}
+OFFSET
+  {{TableApp.pageOffset}}

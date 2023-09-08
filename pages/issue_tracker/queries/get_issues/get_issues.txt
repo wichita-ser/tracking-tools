@@ -1,0 +1,9 @@
+SELECT
+	i.id,
+	i.title,
+	i.category,
+	i.status
+FROM public."issues" as i
+WHERE
+    i.title ILIKE '%' || {{InputSearchIssueText.text}} || '%'
+ORDER BY i.updated_date DESC;

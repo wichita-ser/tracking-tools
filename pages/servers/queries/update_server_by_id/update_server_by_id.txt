@@ -1,0 +1,10 @@
+UPDATE public.server
+SET
+	name={{InputServerEditName.text}},
+	domain_name={{InputServerEditDomain.text}},
+	updated_by={{appsmith.store.current_user.email}},
+	last_updated_version_on={{DatePickerServerEditVersionOn.selectedDate}},
+	last_updated_version_by_user_id={{SelectServerEditVersionBy.selectedOptionValue}},
+	is_suspended={{SelectServerEditServerSuspende.selectedOptionValue === "true" ? true : false}}
+WHERE
+	"id"={{TableServer.triggeredRow.id}};

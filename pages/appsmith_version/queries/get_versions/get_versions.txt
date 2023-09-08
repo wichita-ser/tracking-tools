@@ -1,0 +1,10 @@
+SELECT
+	v.id,
+  CASE
+    WHEN v.is_latest THEN CONCAT(v.name, ' (Latest)')
+    ELSE v.name
+  END AS "name"
+FROM public."version" as v
+WHERE
+    v.name ILIKE '%' || {{InputSearchVersionText.text}} || '%'
+ORDER BY name DESC;

@@ -1,0 +1,7 @@
+INSERT INTO public.version(
+	name, created_by, updated_by)
+	VALUES (
+		{{InputVersionNewName.text}},
+		{{appsmith.store.current_user.email}},
+		{{appsmith.store.current_user.email}}
+	);

@@ -1,0 +1,13 @@
+INSERT INTO public.application(
+	name, description, environment, version_id, server_id, contact_user_id, note, created_by, updated_by)
+	VALUES (
+		{{InputAppNewName.text}},
+		{{InputAppNewDes.text}},
+		{{SelectAppNewEnv.selectedOptionValue}},
+		{{SelectAppNewVersion.selectedOptionValue}},
+		{{SelectAppNewServer.selectedOptionValue}},
+		{{SelectAppNewContact.selectedOptionValue}},
+		{{InputAppNewNote.text}},
+		{{appsmith.store.current_user.email}},
+		{{appsmith.store.current_user.email}}
+	);

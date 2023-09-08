@@ -1,0 +1,6 @@
+select 
+	distinct(status),
+	count(*)
+from public.issues
+group by status
+order by status asc;

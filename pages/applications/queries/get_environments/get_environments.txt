@@ -1,0 +1,4 @@
+SELECT enumsortorder, enumlabel
+FROM pg_enum
+WHERE enumtypid = 'environment'::regtype
+ORDER BY enumsortorder ASC;

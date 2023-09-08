@@ -1,0 +1,16 @@
+SELECT
+	s.id,
+	s.name,
+	s.domain_name,
+	s.last_updated_version_by_user_id,
+	TO_CHAR(
+			s.last_updated_version_on AT TIME ZONE 'UTC' AT TIME ZONE 'Asia/Bangkok',
+			'YYYY-MM-DD"T"HH24:MI:SS"Z"'
+	) AS last_update_version_on,
+	CAST(s.is_suspended AS VARCHAR) AS is_suspended,
+	TO_CHAR(s.updated_date AT TIME ZONE 'UTC' AT TIME ZONE 'Asia/Bangkok', 'DD-MM-YYYY HH24:MI') AS "updated_date",
+	s.updated_by
+FROM
+  public.server AS s
+WHERE s.id = {{TableServer.triggeredRow.id}}
+LIMIT 1;

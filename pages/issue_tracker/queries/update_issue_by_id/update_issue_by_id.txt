@@ -1,0 +1,21 @@
+UPDATE public.issues
+SET
+	title={{InputTitleEdit.text}},
+	description={{RichTextIssueDesEdit.text}},
+	category={{SelectCategoryEdit.selectedOptionValue}},
+	status={{SelectStatusEdit.selectedOptionValue}},
+	opened_by={{this.params.userId}},
+	created_by={{appsmith.store.current_user.email}},
+	updated_by={{appsmith.store.current_user.email}},
+	closed_by = CASE
+  	WHEN status = 'Closed' 
+			THEN (
+				select id from public.user where email = {{appsmith.store.current_user.email}}
+			) ELSE NULL
+    END,
+  closed_date = CASE
+    WHEN status = 'Closed' 
+			THEN CURRENT_TIMESTAMP
+    	ELSE NULL
+  	END
+WHERE "id"={{this.params.id}};
